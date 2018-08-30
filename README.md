@@ -7,7 +7,7 @@ plugins {
   id "com.nemosw.copy-jar" version "1.0"
 }
 
-spigotJar {
+copyJar {
     into '../server/byString
     into file('../server/byFile')
     into { '../server/byclosure' }
