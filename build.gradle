@@ -1,0 +1,40 @@
+plugins {
+    id 'groovy'
+    id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '0.10.0'
+}
+
+group 'com.nemosw'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile localGroovy()
+    compile gradleApi()
+    testCompile 'junit:junit:4.12'
+}
+
+gradlePlugin {
+    plugins {
+        copyJar {
+            id = 'com.nemosw.copy-jar'
+            implementationClass = 'com.nemosw.copyjar.CopyJarPlugin'
+        }
+    }
+}
+
+pluginBundle {
+    website = 'https://github.com/nemosrc'
+
+    plugins {
+        copyJar {
+            vcsUrl = 'https://github.com/nemosrc/copy-jar'
+            displayName = 'spigot-jar'
+            description = 'Copy jar into other directories on build task'
+            tags = ['jar', 'copy', 'multi-directories']
+        }
+    }
+}
